@@ -8,15 +8,34 @@ const fastify = Fastify({
 })
 
 /**
+ * Fastify: registro do banco de dados
+ * user: root
+ * password: root
+ * host: localhost
+ * port: 3306
+ * database: store
+ */
+fastify.register(require("@fastify/mysql"),{
+    connectionString: "mysql://root:root@localhost:3306/store"
+})
+/**
  * Rotas
  */
 fastify.get('/', function(request, reply){
     reply.send({ message: "Welcome to new life with Jesus Christ!"})
 })
 
-fastify.get('/products', function(request, reply){
-    reply.send({ hello: "world"})
+fastify.get('/user', function(request, reply){
+    fastify.mysql.query(
+        "SELECT id, name, email, password FROM users",
+
+        // Capitura e retorna o erro ou o resultado da consulta SQL
+        function onResult(error, result){
+            reply.send(error || result)
+        }
+    )
 })
+
 /**
  * Carrega o servidor 
  */

@@ -2,7 +2,10 @@
 ***
 
 1. Criação do projeto: **npm init -y**;
-2. Instalação das dependências: **npm i nodemon -D fastify**
+2. Instalação das dependências: 
+* **npm i nodemon -D** ;
+* **npm i fastify**;
+* **npm i @fastify/mysql**.
 3. Criação do arquivo src/index.js:
 
 ```js
