@@ -15,6 +15,7 @@
   "description": "",
   "dependencies": {
     "@fastify/mysql": "^4.1.0",
-    "fastify": "^4.14.1"
+    "fastify": "^4.14.1",
+    "mongoose": "^7.0.2"
   }
 }
