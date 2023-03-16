@@ -8,16 +8,36 @@ const fastify = Fastify({
 })
 
 /**
- * Fastify: registro do banco de dados
- * user: root
- * password: root
- * host: localhost
- * port: 3306
- * database: store
+ * Fastify com MySQL
  */
-fastify.register(require("@fastify/mysql"),{
-    connectionString: "mysql://root:root@localhost:3306/store"
-})
+// /**
+//  * Fastify: registro do banco de dados
+//  * user: root
+//  * password: root
+//  * host: localhost
+//  * port: 3306
+//  * database: store
+//  */
+// fastify.register(require("@fastify/mysql"),{
+//     connectionString: "mysql://root:root@localhost:3306/store"
+// })
+
+/**
+ * Fastify com Mongoose
+ */
+
+// Import "mongoose"
+const mongoose = require("mongoose")
+const app = fastify()
+const mongoUrl = process.env.MONGODB_URI || "mongodb://localhost:27017/users"
+
+/** connect to MongoDB datastore */
+try {
+    mongoose.connect(mongoUrl)
+} catch (error) {
+    console.error(error)
+}
+
 /**
  * Rotas
  */
